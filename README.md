@@ -1,3 +1,17 @@
+# Fork info:
+
+This is a fork of [spujadas/lighttpd-docker: Docker image for lighttpd, a secure, fast, compliant, and flexible web server](https://github.com/spujadas/lighttpd-docker)
+
+## Changes from the original:
+
+* updated `docker-compose.yml` to v3 format
+* added some network utility packages
+* added localized directory paths
+* added default index.html file
+
+---
+
+
 # lighttpd Docker image
 
 Security, speed, compliance, and flexibility -- all of these describe [lighttpd](http://www.lighttpd.net/)
@@ -21,7 +35,7 @@ In the instructions that follow, replace:
 - `<config-directory>` with the path of the local directory containing lighttpd configuration files that you want to use instead of the default ones.
 
 	To make it easier to create custom configuration files, the default configuration files are included in the `etc/lighttpd` directory of the Git repository.
- 
+
 -  `<http-port>` with the HTTP port you want the HTTP server to serve content to (e.g. `80` for the standard HTTP port if not already in use on the host).
 
 ### Start a container with Docker
