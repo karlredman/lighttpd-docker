@@ -24,6 +24,7 @@ RUN  rm -rf /var/cache/apk/*
 RUN echo server.network-backend = \"writev\" >> /etc/lighttpd/lighttpd.conf
 
 COPY etc/lighttpd/* /etc/lighttpd/
+COPY htdocs/* /var/www/localhost/htdocs/
 COPY start.sh /usr/local/bin/
 
 EXPOSE 80
