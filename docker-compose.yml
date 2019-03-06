@@ -22,6 +22,22 @@ services:
       volumes:
         - ./htdocs:/var/www/localhost/htdocs
         - ./etc/lighttpd:/etc/lighttpd
-      # networks:
-      #   docker.devnet
 
+# # uncomment for dps and/or testing
+# services:
+#   lighttpd:
+#       image: lighttpd
+#       container_name: docker-container-4-name
+#       hostname: docker-container-4.docker.devnet
+#       build: .
+#       restart: "no"
+#       ports:
+#         - "8084:80" # for testing purposes, (un)comment as required
+#       volumes:
+#         - ./htdocs:/var/www/localhost/htdocs
+#         - ./etc/lighttpd:/etc/lighttpd
+
+# networks:
+#   default:
+#     external:
+#       name: docker.devnet
