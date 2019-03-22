@@ -11,17 +11,22 @@ version: "3"
 # after start, enter shell with:
 # $ sudo docker exec -it lighttpddocker_lighttpd_1 ash
 
-services:
-  lighttpd:
-      image: lighttpd
-      container_name: lighttpd
-      build: .
-      restart: always
-      ports:
-        - "8082:80" # for testing purposes, (un)comment as required
-      volumes:
-        - ./htdocs:/var/www/localhost/htdocs
-        - ./etc/lighttpd:/etc/lighttpd
+##################################
+
+# # uncomment for basic testing
+# services:
+#   lighttpd:
+#       image: lighttpd
+#       container_name: lighttpd
+#       build: .
+#       restart: always
+#       ports:
+#         - "8082:80" # for testing purposes, (un)comment as required
+#       volumes:
+#         - ./htdocs:/var/www/localhost/htdocs
+#         - ./etc/lighttpd:/etc/lighttpd
+
+##################################
 
 # # uncomment for dps and/or testing
 # services:
@@ -41,3 +46,31 @@ services:
 #   default:
 #     external:
 #       name: docker.devnet
+
+
+##################################
+
+services:
+  lighttpd:
+      image: lighttpd
+      container_name: lighttpd
+      build: .
+      #restart: always
+      ports:
+        - "8082:80" # for testing purposes, (un)comment as required
+      volumes:
+        - ../../Repositories/Heorot_Hugo/public:/var/www/localhost/htdocs
+        # - ./htdocs:/var/www/localhost/htdocs
+        - ./etc/lighttpd:/etc/lighttpd
+      labels:
+        - traefik.enable=true
+        # - "traefik.frontend.rule=Host:lighttpd.scuar.home"
+        # - "traefik.frontend.rule=Host:hugo.scuar.lan"
+        - "traefik.frontend.rule=Host:scuar.lan; PathPrefixStrip:/hugo"
+        - traefik.port=80
+      networks:
+        - scuar.dockernet
+
+networks:
+  scuar.dockernet:
+    external: true
