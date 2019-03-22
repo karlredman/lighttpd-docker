@@ -64,9 +64,10 @@ services:
         - ./etc/lighttpd:/etc/lighttpd
       labels:
         - traefik.enable=true
-        # - "traefik.frontend.rule=Host:lighttpd.scuar.home"
+        - "traefik.frontend.rule=Host:lighttpd.private.home"
+        #- "traefik.frontend.rule=Host:lighttpd.private.home"
         # - "traefik.frontend.rule=Host:hugo.scuar.lan"
-        - "traefik.frontend.rule=Host:scuar.lan; PathPrefixStrip:/hugo"
+        # - "traefik.frontend.rule=Host:scuar.lan; PathPrefixStrip:/hugo"
         - traefik.port=80
       networks:
         - scuar.dockernet
